@@ -21,25 +21,6 @@ public class DemoApplication {
 		new Thread(() -> {
 			InetAddress[] addresses = new InetAddress[0];
 			try {
-				// 获取默认的 TimeZoneNameProvider
-				// 使用 ServiceLoader 加载所有可用的 TimeZoneNameProvider 实现
-//				ServiceLoader<TimeZoneNameProvider> loader = ServiceLoader.load(TimeZoneNameProvider.class);
-//
-//				// 获取第一个实现
-//				TimeZoneNameProvider provider = loader.findFirst().orElse(null);
-//
-//				// 获取美国洛杉矶时区的名称
-//				String displayName = provider.getDisplayName("America/Los_Angeles", false, TimeZone.LONG, Locale.US);
-//				System.out.println(displayName); // 输出：Pacific Standard Time
-//
-//				TimeZone tz = TimeZone.getTimeZone("America/Los_Angeles");
-//				System.out.println("=====" + tz.getDisplayName());
-
-//				ServiceLoader<InetAddressResolverProvider> load = ServiceLoader.load(InetAddressResolverProvider.class);
-//				InetAddressResolverProvider inetAddressResolverProvider = load.findFirst().orElse(null);
-//				System.out.println(inetAddressResolverProvider.name());
-
-//				Thread.sleep(10* 1000);
 				System.out.println("====begin");
 				addresses = InetAddress.getAllByName("fedora");
 
