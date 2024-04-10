@@ -2,9 +2,11 @@ package com.example.demo;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.UnknownHostException;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import org.junit.jupiter.api.Test;
@@ -29,6 +31,12 @@ class DemoApplicationTests {
 		System.out.println(jarFile.getName());
 		final JarEntry entry = jarFile.getJarEntry("META-INF/services/java.net.spi.InetAddressResolverProvider");
 		System.out.println(entry.getName());
+	}
+
+	@Test
+	void test() throws UnknownHostException {
+		String hostName = InetAddress.getLocalHost().getHostName();
+		System.out.println(hostName);
 	}
 
 }

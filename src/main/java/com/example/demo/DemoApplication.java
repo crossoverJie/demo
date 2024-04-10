@@ -23,6 +23,8 @@ public class DemoApplication {
 			try {
 				System.out.println("====begin");
 				addresses = InetAddress.getAllByName("fedora");
+				InetAddress byAddress = InetAddress.getByAddress(new byte[]{127, 127, 10, 1});
+				System.out.println("+++++" + byAddress.getHostName());
 
 			} catch (Exception e) {
 				throw new RuntimeException(e);

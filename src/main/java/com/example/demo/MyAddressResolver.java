@@ -20,6 +20,7 @@ public class MyAddressResolver implements InetAddressResolver {
     }
     @Override
     public String lookupByAddress(byte[] addr) {
-        throw new UnsupportedOperationException();
+        System.out.println("++++++" + addr[0] + " " + addr[1] + " " + addr[2] + " " + addr[3]);
+        return  "fedora";
     }
 }
