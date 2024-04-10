@@ -18,7 +18,7 @@ addresses = [/127.127.10.1]
 Run with javaagent is incorrect.
 ```shell
 java -javaagent:opentelemetry-javaagent.jar \
-      -Dotel.java.disabled.resource-providers=otel.java.disabled.resource.providers.HostResourceProvider \
+      -Dotel.java.disabled.resource-providers=io.opentelemetry.instrumentation.resources.HostResourceProvider \
       -jar target/demo-0.0.1-SNAPSHOT.jar
 ```
 
