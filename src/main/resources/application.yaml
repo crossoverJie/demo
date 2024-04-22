@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: demo
+server:
+  port: 9191
+grpc:
+  server:
+    port: 9192
+  client:
+    myService:
+      address: 'static://127.0.0.1:9192'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
