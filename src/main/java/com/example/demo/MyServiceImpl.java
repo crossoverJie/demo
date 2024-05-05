@@ -2,7 +2,9 @@ package com.example.demo;
 
 import io.grpc.stub.StreamObserver;
 
+import io.opentelemetry.api.baggage.Baggage;
 import lombok.extern.slf4j.Slf4j;
+import net.devh.boot.grpc.client.inject.GrpcClient;
 import net.devh.boot.grpc.server.service.GrpcService;
 
 @GrpcService
@@ -11,6 +13,8 @@ public class MyServiceImpl extends MyServiceGrpc.MyServiceImplBase {
 
     @Override
     public void sayHello(HelloRequest request, StreamObserver<HelloReply> responseObserver) {
+        String value = Baggage.current().getEntryValue("my-transaction-id");
+        log.info("my-transaction-id: {}", value);
 
         HelloReply reply = HelloReply.newBuilder()
                 .setMessage("Hello ==> " + request.getName())
