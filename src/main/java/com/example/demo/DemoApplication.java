@@ -2,6 +2,7 @@ package com.example.demo;
 
 import io.opentelemetry.api.baggage.Baggage;
 import io.opentelemetry.context.Context;
+import io.opentelemetry.context.Scope;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.URI;
@@ -9,6 +10,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Arrays;
+import java.util.concurrent.Executors;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.client.inject.GrpcClient;
@@ -32,9 +34,10 @@ public class DemoApplication {
 
 	@RequestMapping("/request")
 	public String request(@RequestParam String name) {
-//		Baggage.current().toBuilder().
-//				put("my-transaction-id", "some-transaction-id").build()
-//				.storeInContext(Context.current()).makeCurrent();
+		Baggage.current().toBuilder().
+				put("request.name", name).build()
+				.storeInContext(Context.current()).makeCurrent();
+
 
 		HelloRequest request = HelloRequest.newBuilder()
 				.setName(name)
