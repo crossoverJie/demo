@@ -34,16 +34,20 @@ public class DemoApplication {
 
 	@RequestMapping("/request")
 	public String request(@RequestParam String name) {
-		Baggage.current().toBuilder().
-				put("request.name", name).build()
-				.storeInContext(Context.current()).makeCurrent();
+//		Baggage.current().toBuilder().
+//				put("request.name", name).build()
+//				.storeInContext(Context.current()).makeCurrent();
 
 
 		HelloRequest request = HelloRequest.newBuilder()
 				.setName(name)
 				.build();
 		log.info("request: {}", request);
-		return myServiceStub.sayHello(request).getMessage();
+		String message = myServiceStub.create1(request).getMessage();
+		Executors.newFixedThreadPool(1).execute(() -> {
+			myServiceStub.create1(request).getMessage();
+		});
+		return message;
 //		return "";
 	}
 	@SneakyThrows
