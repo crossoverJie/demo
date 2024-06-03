@@ -51,9 +51,13 @@ public class MyServiceImpl extends MyServiceGrpc.MyServiceImplBase {
                 .build();
         log.info("Create2: {}", reply.getMessage());
         myMethod(request.getName());
-        myServiceStub.create3(request);
+        callCreate3(request);
         responseObserver.onNext(reply);
         responseObserver.onCompleted();
+    }
+
+    private void callCreate3(HelloRequest request){
+        myServiceStub.create3(request);
     }
     @Override
     public void create3(HelloRequest request, StreamObserver<HelloReply> responseObserver) {

@@ -43,9 +43,9 @@ public class DemoApplication {
 				.setName(name)
 				.build();
 		log.info("request: {}", request);
-		String message = myServiceStub.create1(request).getMessage();
+		String message = myServiceStub.create2(request).getMessage();
 		Executors.newFixedThreadPool(1).execute(() -> {
-			myServiceStub.create1(request).getMessage();
+			myServiceStub.create2(request).getMessage();
 		});
 		return message;
 //		return "";
